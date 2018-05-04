@@ -1,8 +1,11 @@
+const helpers = require('../../utils/helpers');
 const moment = require('moment');
 
-const date_format = 'YYYY-MM-DD'
-const today = moment().startOf('day')
-const tomorrow = moment(today).add(1, 'days')
+const today = helpers.getToday();
+const tomorrow = helpers.getDay(1);
+
+console.log(today)
+console.log(tomorrow)
 
 module.exports = function (app, db) {
 

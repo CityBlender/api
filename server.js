@@ -1,7 +1,8 @@
-require('./config/config');
+require('./utils/config');
 const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
+
 
 // configure Express server
 const app = express();
