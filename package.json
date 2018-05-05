@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/CityBlender/api#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
@@ -27,7 +28,9 @@
     "moment": "^2.22.1",
     "mongodb": "^3.0.7",
     "mongoose": "^5.0.17",
+    "node-fetch": "^2.1.2",
     "path": "^0.12.7",
+    "request": "^2.85.0",
     "socket.io": "^2.1.0"
   },
   "devDependencies": {

@@ -4,9 +4,6 @@ const moment = require('moment');
 const today = helpers.getToday();
 const tomorrow = helpers.getDay(1);
 
-console.log(today)
-console.log(tomorrow)
-
 module.exports = function (app, db) {
 
   // today's events
