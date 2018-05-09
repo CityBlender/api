@@ -21,18 +21,18 @@ if (current_env == 'production') {
 // require('./app/fetch');
 
 // connect to MongoDB
-// MongoClient.connect(mongo_url, (err, client) => {
-//   // throw error if connection is not successful
-//   if (err) return console.log(err);
+MongoClient.connect(mongo_url, (err, client) => {
+  // throw error if connection is not successful
+  if (err) return console.log(err);
 
-//   // get database name
-//   db = client.db('london');
-//   require('./app/routes')(app, db);
+  // get database name
+  db = client.db('london');
+  require('./app/routes')(app, db);
 
-//   app.listen(port, () => {
-//     console.log('Database connected. We are now live on ' + port);
-//   });
-// });
+  app.listen(port, () => {
+    console.log('Database connected. We are now live on ' + port);
+  });
+});
 
 
 // mongoose.connect(mongo_url);

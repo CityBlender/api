@@ -74,7 +74,7 @@ async function getEventsArray(area, min_date = today, max_date = today) {
   console.log('Got a total of ' + all_events.length + ' events for area ' + area);
 
   // return all events in a single array
-  return all_events
+  return all_events;
 
 }
 
@@ -157,9 +157,13 @@ async function fetchEvents(area) {
     };
 
     // insert object into database
-    db.insertEvent(event)
+    db.insertEvent(event);
+
   });
 
+  console.log('All events successfully stored in a database');
+
+  return;
 }
 
 module.exports.fetchEvents = fetchEvents;

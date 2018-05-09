@@ -4,7 +4,7 @@ const axios = require('axios');
 
 // dates
 exports.getToday = function () {
-  day = moment().startOf('day').format();
+  day = moment().startOf('day').toDate();
   return day;
 };
 
@@ -14,7 +14,7 @@ exports.getTodayShort = function () {
 };
 
 exports.getDay = function (day_offset) {
-  day = moment().add(day_offset, 'day').startOf('day').format();
+  day = moment().add(day_offset, 'day').startOf('day').toDate();
   return day;
 };
 

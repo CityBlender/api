@@ -1,8 +1,8 @@
 const helpers = require('../../utils/helpers');
 const moment = require('moment');
 
-const today = helpers.getToday();
-const tomorrow = helpers.getDay(1);
+const today = helpers.getTodayShort();
+const tomorrow = helpers.getDayShort(1);
 
 module.exports = function (app, db) {
 
@@ -11,10 +11,7 @@ module.exports = function (app, db) {
 
     const query = {
       // start_date: '2018-05-04'
-      start_datetime: {
-        $gte: today.toDate(),
-        $lte: tomorrow.toDate()
-      }
+      date: today
     };
 
     const sort = {

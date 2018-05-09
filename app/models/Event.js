@@ -34,7 +34,7 @@ const eventSchema = new mongoose.Schema({
   }
 });
 
-eventSchema.plugin(uniqueValidator);
+// eventSchema.plugin(uniqueValidator);
 const Event = mongoose.model('Event', eventSchema, 'events');
 
 module.exports = Event;

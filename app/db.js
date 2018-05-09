@@ -21,16 +21,28 @@ const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
-  // we're connected!
+  console.log('Sucessfully connected to database');
 });
 
 // insert event function
-function insertEvent(object) {
+async function insertEvent(object) {
   var event = new Event(object);
 
   event.save(function (err, event) {
-    if (err) return console.error(err.message);
+    if (err) {
+      if (err.code == 11000) {
+        return console.log('Record already exists');
+        // return console.log(err.properties)
+        // return;
+      } else {
+        return console.error(err.message);
+      }
+    } else {
+      return console.log(event.event_name + ' stored');
+    }
   });
+
+  return;
 };
 
 module.exports.insertEvent = insertEvent;
