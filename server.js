@@ -6,7 +6,6 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 
 
-
 // configure Express server
 const app = express();
 const port = CONFIG.port;
@@ -28,18 +27,25 @@ app.use(express.static('app/static'))
 // CRON setup
 app.use(function (req, res, next) {
 
+  var allowed_origins = ['https://fuinki.netlify.com/', 'http://localhost:3000'];
+
+  var origin = req.headers.origin;
+
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+
+  if (allowedOrigins.indexOf(origin) > -1) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
 
   // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
 
   // Request headers you wish to allow
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
 
   // Pass to next layer of middleware
-  next();
+  return next();
 });
 
 // homepage
