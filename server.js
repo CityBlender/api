@@ -28,12 +28,10 @@ app.use(express.static('app/static'))
 app.use(function (req, res, next) {
 
   var allowed_origins = ['https://fuinki.netlify.com/', 'http://localhost:3000'];
-
   var origin = req.headers.origin;
 
   // Website you wish to allow to connect
-
-  if (allowedOrigins.indexOf(origin) > -1) {
+  if (allowed_origins.indexOf(origin) > -1) {
     res.setHeader('Access-Control-Allow-Origin', origin);
   }
 
