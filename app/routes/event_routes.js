@@ -23,6 +23,7 @@ module.exports = function (app, db) {
       event_url: 1,
       event_type: 1,
       event_popularity: 1,
+      date: 1,
       start_datetime: 1,
       location: 1,
       venue_id: 1,

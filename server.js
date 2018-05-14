@@ -2,6 +2,9 @@ require('./utils/config');
 const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
+const path = require('path');
+const exphbs = require('express-handlebars');
+
 
 
 // configure Express server
@@ -9,6 +12,20 @@ const app = express();
 const port = CONFIG.port;
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// configure Hanlebars templating engine
+app.engine('.hbs', exphbs({
+  defaultLayout: 'default',
+  extname: '.hbs',
+  layoutsDir: path.join(__dirname, 'app/views/templates')
+}))
+
+app.set('view engine', '.hbs')
+app.set('views', path.join(__dirname, 'app/views'))
+app.use(express.static('app/static'))
+
+
+
+// CRON setup
 app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
@@ -23,6 +40,13 @@ app.use(function (req, res, next) {
 
   // Pass to next layer of middleware
   next();
+});
+
+// homepage
+app.get('/', (request, response) => {
+  response.render('home', {
+    title: 'Fuinki'
+  })
 });
 
 // configure MongoDB URL based on the current environment
@@ -49,12 +73,3 @@ MongoClient.connect(mongo_url, (err, client) => {
     console.log('Database connected. We are now live on ' + port);
   });
 });
-
-
-// mongoose.connect(mongo_url);
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-
-// db.once('open', function() {
-//   console.log('connected to DB!!!');
-// });
