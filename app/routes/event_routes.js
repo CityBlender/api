@@ -19,17 +19,19 @@ module.exports = function (app, db) {
     }
 
     const projection = {
-      event_name: 1,
-      event_url: 1,
-      event_type: 1,
-      event_popularity: 1,
+      name: 1,
+      url: 1,
+      type: 1,
+      popularity: 1,
       date: 1,
-      start_datetime: 1,
+      time: 1,
+      datetime: 1,
       location: 1,
-      venue_id: 1,
-      venue_name: 1,
-      venue_location: 1,
-      artists: 1
+      venue: 1,
+      artists: 1,
+      spotify: 1,
+      lastfm: 1,
+      foursquare: 1
     };
 
     db.collection('events').find(query).sort(sort).project(projection).toArray(function(err, results) {
