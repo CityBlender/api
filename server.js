@@ -6,7 +6,6 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 
 
-
 // configure Express server
 const app = express();
 const port = CONFIG.port;
@@ -22,7 +21,6 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs')
 app.set('views', path.join(__dirname, 'app/views'))
 app.use(express.static('app/static'))
-
 
 
 // CRON setup

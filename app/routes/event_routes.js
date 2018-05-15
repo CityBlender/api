@@ -10,7 +10,6 @@ module.exports = function (app, db) {
   app.get('/london/events/today', (req, res) => {
 
     const query = {
-      // start_date: '2018-05-04'
       date: today
     };
 
