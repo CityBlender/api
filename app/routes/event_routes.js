@@ -7,10 +7,12 @@ const tomorrow = helpers.getDayShort(1);
 module.exports = function (app, db) {
 
   // today's events
-  app.get('/london/events/today', (req, res) => {
+  app.get('/london/events/:date', (req, res) => {
+
+    date = req.params.date
 
     const query = {
-      date: today
+      date: date
     };
 
     const sort = {
