@@ -21,6 +21,7 @@ module.exports = function (app, db) {
 
     const projection = {
       name: 1,
+      id: 1,
       url: 1,
       type: 1,
       popularity: 1,
